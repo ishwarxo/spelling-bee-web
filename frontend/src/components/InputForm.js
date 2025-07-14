@@ -4,23 +4,25 @@ import LetterGrid from './LetterGrid';
 function InputForm({ onSubmit }) {
   const [letters, setLetters] = useState('');
   const [centralLetter, setCentralLetter] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
     if (!/^[a-zA-Z]{7}$/.test(letters)) {
-      alert('Please enter exactly 7 alphabetic letters.');
+      setErrorMessage('Please enter exactly 7 alphabetic letters.');
       return;
     }
     if (new Set(letters.toLowerCase()).size !== 7) {
-      alert('Letters must be unique (no duplicates).');
+      setErrorMessage('Letters must be unique (no duplicates).');
       return;
     }
     if (!/^[a-zA-Z]$/.test(centralLetter)) {
-      alert('Central letter must be a single alphabetic character.');
+      setErrorMessage('Central letter must be a single alphabetic character.');
       return;
     }
     if (!letters.toLowerCase().includes(centralLetter.toLowerCase())) {
-      alert('Central letter must be one of the 7 letters.');
+      setErrorMessage('Central letter must be one of the 7 letters.');
       return;
     }
     onSubmit(letters, centralLetter);
@@ -59,6 +61,7 @@ function InputForm({ onSubmit }) {
           Solve Puzzle
         </button>
       </form>
+      {errorMessage && (<p className="text-red-500 mt-4 text-sm text-center">{errorMessage}</p>)}
     </div>
   );
 }
