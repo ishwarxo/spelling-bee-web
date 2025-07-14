@@ -62,6 +62,10 @@ function getRank(score, maxScore) {
   return 'Beginner';
 }
 
+app.get('/', (req, res) => {
+  res.send('API is running. Use POST /solve to solve words.');
+});
+
 app.post('/solve', async (req, res) => {
   const { letters, centralLetter } = req.body;
   const validation = validateInput(letters, centralLetter);

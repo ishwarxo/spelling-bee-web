@@ -27,7 +27,8 @@ function InputForm({ onSubmit }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl">
+      <LetterGrid letters={letters} centralLetter={centralLetter} />
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 font-semibold">7 Unique Letters</label>
@@ -58,7 +59,6 @@ function InputForm({ onSubmit }) {
           Solve Puzzle
         </button>
       </form>
-      <LetterGrid letters={letters} centralLetter={centralLetter} />
     </div>
   );
 }

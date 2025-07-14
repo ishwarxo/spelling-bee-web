@@ -5,7 +5,7 @@ function LetterGrid({ letters, centralLetter }) {
 
   const outerLetters = letters.split('').filter(l => l.toLowerCase() !== centralLetter.toLowerCase());
   return (
-    <div className="relative w-40 h-40 flex items-center justify-center mt-4">
+    <div className="relative w-50 h-40 flex items-center justify-center mb-4">
       <div className="absolute text-2xl font-bold bg-yellow-300 rounded-full w-12 h-12 flex items-center justify-center">
         {centralLetter.toUpperCase()}
       </div>

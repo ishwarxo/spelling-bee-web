@@ -11,6 +11,13 @@ function Results({ results }) {
     <div className="mt-6 w-full max-w-2xl">
       <h2 className="text-2xl font-semibold mb-4">Results</h2>
       <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="mb-4">
+          <p><strong>Total Words:</strong> {results.wordCount}</p>
+          <p><strong>Pangrams:</strong> {results.pangramCount}</p>
+          <p><strong>Total Score:</strong> {results.totalScore}</p>
+          <p><strong>Maximum Score:</strong> {results.maxScore}</p>
+          <p><strong>Rank:</strong> {results.rank}</p>
+        </div>
         {Object.keys(results.wordsByLength).sort((a, b) => a - b).map(length => (
           <div key={length} className="mb-4">
             <button
@@ -50,19 +57,6 @@ function Results({ results }) {
               )}
             </ul>
           )}
-        </div>
-        <div className="mt-4">
-          <p><strong>Total Words:</strong> {results.wordCount}</p>
-          <p><strong>Pangrams:</strong> {results.pangramCount}</p>
-          <p><strong>Total Score:</strong> {results.totalScore}</p>
-          <p><strong>Maximum Score:</strong> {results.maxScore}</p>
-          <p><strong>Rank:</strong> {results.rank}</p>
-          <div className="w-full bg-gray-200 rounded-full h-4 mt-2">
-            <div
-              className="bg-blue-500 h-4 rounded-full"
-              style={{ width: `${results.percentage}%` }}
-            ></div>
-          </div>
         </div>
       </div>
     </div>
